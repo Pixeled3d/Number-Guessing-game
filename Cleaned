@@ -1,0 +1,41 @@
+Samepeoplebool = False
+player_one = ""
+player_two = ""
+
+while True:
+    if not Samepeoplebool:
+        player_one = input("Hello, Player one, enter your name: ")
+        Number = input(f"{player_one}, enter a number between 1 and 100: ")
+        print("Pass to player two")
+        player_two = input("Hello, Player two, enter your name: ")
+    else:
+        Number = input(f"{player_one}, enter a number between 1 and 100: ")
+    
+    print(f"{player_two}, you must guess the number that {player_one} entered")
+    
+    GameNumOfG = 0
+    IntNumber = int(Number)
+    
+    while True:
+        guess = input("Enter your guess: ")
+        IntGuess = int(guess)
+        GameNumOfG += 1
+        
+        if IntGuess == IntNumber:
+            tries_word = "try" if GameNumOfG == 1 else "tries"
+            print(f"Congratulations, you guessed the number! It took you {GameNumOfG} {tries_word}.")
+            break
+        elif 0 < abs(IntGuess - IntNumber) <= 10:
+            print("You're getting warmer")
+        elif IntNumber > IntGuess:
+            print("Too low")
+        else:
+            print("Too high")
+    
+    userinput = input("Play again? Type 'end' to quit or press enter to continue: ")
+    if userinput == "end":
+        print("Thanks for playing!")
+        break
+    
+    SamePeople = input("Same players? Press enter for yes or type 'new': ")
+    Samepeoplebool = (SamePeople != "new")
