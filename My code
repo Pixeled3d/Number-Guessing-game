@@ -1,0 +1,121 @@
+
+Samepeoplebool = False
+
+while True:
+
+    input("Press enter to start the game")
+
+    print("Delay...")
+    GameNumOfG = 0
+    TotalNumOfG = 0
+    PastNumOfG = 0
+    def Beggining():
+        global Samepeoplebool
+        if Samepeoplebool == False:
+            player_one = input("Hello, Player one, enter your name: ")
+
+            Number = input(f"{player_one}, enter a number between 1 and 100:")
+
+            print("Pass to player two")
+
+            player_two = input("Hello, Player two, enter your name: ")
+
+            print(f"{player_two}, you must guess the number that {player_one} entered")
+        if Samepeoplebool == True:
+            print(player_one)
+            
+            Number = input(f"{player_one}, enter a number between 1 and 100:")
+            
+            print(player_two)
+
+            print(f"{player_two}, you must guess the number that {player_one} entered")
+
+        def Enter():
+        
+            global userinput
+            global GameNumOfG
+            global TotalNumOfG
+            global PastNumOfG
+            global guess
+
+            guess = input("Enter your guess: ")
+
+            IntNumber = int(Number)
+            IntGuess = int(guess)
+            GameNumOfG += 1
+
+            if 0 < abs(IntGuess - IntNumber) <= 10:
+                print("You're getting warmer")
+            else:
+                if IntNumber > IntGuess:
+                        print("Too low")
+                if IntNumber < IntGuess:
+                        print("Too high")
+
+            while IntGuess != IntNumber:
+                guess = input("Enter your guess: ")
+                GameNumOfG += 1
+
+                IntGuess = int(guess)
+
+                if abs(IntGuess - IntNumber) <= 10:
+                        print("You're getting warmer")
+                else:
+                    if IntNumber > IntGuess:
+                        print("Too low")
+                    if IntNumber < IntGuess:
+                        print("Too high")
+            if GameNumOfG == 1:
+                print("Congratulations, you guessed the number! It took you", GameNumOfG, "try.")
+                userinput = input("Play again? Press enter to start a new game or type 'end' to end the game: ")
+                
+                if userinput == "end":
+                    Samepeoplebool = False
+                    return "reset"
+            
+                SamePeople = input("Same players? Press enter to play again with the same players, or type 'new' to start a new game with new players: ")
+                if SamePeople == "new":
+                    Samepeoplebool = False
+                    TotalNumOfG = PastNumOfG + GameNumOfG
+                    
+                    PastNumOfG += GameNumOfG
+                    print(TotalNumOfG) ##saved for later or all entire games total number of guesses  
+                    Beggining()
+
+                else:
+                    Samepeoplebool = True
+                    TotalNumOfG = PastNumOfG + GameNumOfG
+                    PastNumOfG += GameNumOfG
+                    print(TotalNumOfG) ##saved for later or all entire games total number of guesses  
+                    Beggining()
+
+            if GameNumOfG > 1:
+                print("Congratulations, you guessed the number! It took you", GameNumOfG, "tries.")
+                userinput = input("Play again? Press enter to start a new game or type 'end' to end the game: ")
+                
+                if userinput == "end":
+                    Samepeoplebool = False
+  
+                    print(TotalNumOfG) ##saved for later or all entire games total number of guesses 
+   
+                    return "reset"
+        
+                SamePeople = input("Same players? Press enter to play again with the same players, or type 'new' to start a new game with new players: ")
+                if SamePeople == "new":
+                    Samepeoplebool = False
+                    TotalNumOfG = PastNumOfG + GameNumOfG
+                    PastNumOfG += GameNumOfG
+                    print(TotalNumOfG) ##saved for later or all entire games total number of guesses  
+                    Beggining()
+
+
+                else:
+                    Samepeoplebool = True
+                    TotalNumOfG = PastNumOfG + GameNumOfG
+                    PastNumOfG += GameNumOfG
+
+                    print(TotalNumOfG) ##saved for later or all entire games total number of guesses  
+                    Beggining()
+        
+        Enter()
+    Beggining()
