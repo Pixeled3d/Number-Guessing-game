@@ -1,4 +1,4 @@
-# 1-Guessing-game
+# LearningPython-Guessing-game
 Day 1 - project 1
 First time learning python as someone who knows lua only 
 
